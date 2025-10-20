@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+    margin: 0;
+    font-family: Lato, Arial;
+    font-weight: 300;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+html {
+    scroll-behavior: smooth; /* Optional: for smooth scrolling */
+    /* Set the space to leave above the anchor target */
+    scroll-padding-top: 20vh; /* Use a value slightly larger than your fixed header's height */
+}
+
+#cover-page {
+    /* Existing properties remain, but 'padding: auto;' is removed as it's invalid */
+    height: 100vh;
+    width: 100vw;
+    /* Add Flexbox properties for centering children */
+    display: flex; /* ⬅️ Enable flex layout */
+    justify-content: center; /* ⬅️ Center children horizontally */
+    align-items: center; /* ⬅️ Center children vertically */
+}
+
+#cover-page-contents {
+    width: 20%;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#cover-page-contents img {
+    width: 100%;
+    height: auto;
+}
+
+.main-content {
+    padding-left: 10%;
+    padding-right: 10%;
+    color: white;
+    height: 100vh;
+    text-align: center;
+}
+
+
+#main-header {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.scrolled#cover-page-contents {
+    opacity: 0;
+}
+
+.scrolled#main-header {
+    opacity: 1;
+}
+
+.scrolled#arrow {
+    opacity: 0;
+}
+
+.header {
+    position: fixed;
+    width: 100vw;
+}
+
+#arrow {
+    position: absolute;
+    bottom: 30px;
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+@keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(10px);
+    }
+    60% {
+        transform: translateY(5px);
+    }
+}
