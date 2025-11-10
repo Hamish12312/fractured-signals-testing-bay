@@ -1,60 +1,157 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Fractured Signals</title>
-        <link rel="stylesheet" href="css/index-style.css" />
-        <link rel="stylesheet" href="css/audioplayer.css" />
-        <script src="js/include.js" defer></script>
-        <style>
-            body {
-                background-image: url("images/website-background.jpg");
-            }
-        </style>
-    </head>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Fractured Signals</title>
+<meta name="description" content="One-page site for a music project — cover, about, music, contact." />
+<link rel="stylesheet" href="style3.css" />
+</head>
+<body>
 
-    <body>
-        <section class="header">
-            <div id="header"></div>
-        </section>
-        <section id="cover-page">
-            <div id="cover-page-contents">
-                <img src="images/fractured.png" />
-                <div class="signals">
-                    <img src="images/signals.png" />
-                    <script src="js/glitch.js"></script>
-                </div>
-                <span class="whitetxt">DRUM AND BASS FROM OXFORDSHIRE</span>
-            </div>
-            <div id="arrow">V</div>
-        </section>
-        <script src="js/fade.js"></script>
-        <section id="music">
-            <div class="main-content">
-                <h1>Music</h1>
-                    <div class="align-center" id="audioplayer"></div>
-            </div>
-        </section>
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <!-- Left: Brand / Logo -->
+    <div class="brand" aria-label="Brand">
+      <div class="logo" id="logo-top" title="Your Project">
+          <img src="images/fractured-signals-logo.png">
+      </div>
+    </div>
 
-        <section id="aboutus">
-            <div class="main-content">
-                <h1>About Us</h1>
-                <p>Information about us</p>
-            </div>
-        </section>
+    <!-- Mobile toggle (visible on small screens) -->
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      Menu
+    </button>
 
-        <section id="gallery">
-            <div class="main-content">
-                <h1>Gallery</h1>
-                <p>Pictures of us</p>
-            </div>
-        </section>
-        <section id="contactus">
-            <div class="main-content">
-                <h1>Contact Us</h1>
-                <p>Contact details for us</p>
-            </div>
-        </section>
-    </body>
+    <!-- Desktop nav -->
+    <nav class="desktop-nav" id="mainNav" aria-label="Main navigation">
+      <a href="#cover" data-target="cover" class="nav-link">Home</a>
+      <a href="#about" data-target="about" class="nav-link">About</a>
+      <a href="#music" data-target="music" class="nav-link">Music</a>
+      <a href="#contact" data-target="contact" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Mobile nav panel (collapsible) — JS toggles display on small screens -->
+    <nav class="mobile-nav" id="mobileNav" aria-hidden="true" style="display:none">
+      <a href="#cover" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#music" class="nav-link">Music</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- COVER / HERO -->
+  <section id="cover" class="cover" aria-labelledby="coverTitle">
+    <div class="cover-inner container">
+      <!-- Logo center in cover. This is where your animation target should go. -->
+      <div class="cover-logo" id="coverLogo">
+        <!-- Provide an element with id="logo-animation" — your JS animation can target this element -->
+        <div id="logo-animation" aria-hidden="false">
+          <div class="content">
+        <img src="images/fractured.png" alt="Fractured" class="fractured" />
+        <div class="signals-container">
+          <img src="images/signals.png" alt="Signals" class="signals" />
+          <script src="js/glitch.js"></script>
+        </div>
+        </div>
+      </div>
+      <p class="cover-sub" style="max-width:720px; margin:12px auto 0">DRUM AND BASS OUT OF OXFORDSHIRE</p>
+    </div>
+      </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="aboutHeading">
+    <div class="section-inner container">
+      <h2 id="aboutHeading" class="section-title" contenteditable="true">About Us</h2>
+      <p class="lead" contenteditable="true">Short editable paragraph about the project, band members, influences, background — click and edit directly. When you're ready to publish, replace the text server-side or in your build pipeline.</p>
+      <p style="color:var(--muted); margin-top:14px">Tip: Section titles and paragraphs are contenteditable so you can quickly update them while developing. Remove contenteditable in production if you don't want inline editing.</p>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music" aria-labelledby="musicHeading">
+    <div class="section-inner container">
+      <h2 id="musicHeading" class="section-title" contenteditable="true">Music</h2>
+      <p class="lead" contenteditable="true">Tracks below are sample markup. Replace the `src` attributes with your server paths (e.g. <code>/audio/track1.mp3</code>).</p>
+
+      <div class="tracks" id="tracksList">
+        <!-- Example track (duplicate this block for each track or use the small JS helper below) -->
+        <article class="track" data-track-id="1">
+          <div class="track-info">
+            <p class="track-title" contenteditable="true">Track One (Editable Title)</p>
+            <p class="track-meta" contenteditable="true">2025 • Single • 3:45</p>
+            <!-- Audio player — replace src with your actual file path -->
+            <audio controls preload="metadata" src="/audio/track1.mp3">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+        </article>
+
+        <article class="track" data-track-id="2">
+          <div class="track-info">
+            <p class="track-title" contenteditable="true">Track Two</p>
+            <p class="track-meta" contenteditable="true">2025 • Single • 4:12</p>
+            <audio controls preload="metadata" src="/audio/track2.mp3"></audio>
+          </div>
+        </article>
+      </div>
+
+      <!-- Developer helper: quick form to add a track entry client-side (not persisted) -->
+      <div style="margin-top:18px; display:flex; gap:8px; align-items:center; flex-wrap:wrap">
+        <input id="newTrackSrc" type="text" placeholder="/audio/your-file.mp3" style="flex:1; min-width:220px; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff">
+        <input id="newTrackTitle" type="text" placeholder="Track Title" style="min-width:160px; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff">
+        <button class="btn" id="addTrackBtn" type="button">Add Track</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contactHeading">
+    <div class="section-inner container">
+      <h2 id="contactHeading" class="section-title" contenteditable="true">Contact Us</h2>
+      <p class="lead" contenteditable="true">Booking, press or general inquiries — replace the contact form action with your server endpoint or use the mailto fallback below.</p>
+
+      <div class="contact-grid">
+        <form id="contactForm" class="form" onsubmit="handleContactSubmit(event)">
+          <div class="form-control">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-control">
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-control">
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Message..." rows="6" required></textarea>
+          </div>
+          <div style="margin-top:10px">
+            <button class="btn" type="submit">Send Message</button>
+          </div>
+        </form>
+
+        <aside style="color:var(--muted); padding-left:8px">
+          <strong>Alternative:</strong>
+          <p style="margin-top:8px">You can also email directly: <a href="mailto:info@fracturedsignals.uk" style="color:var(--accent);">info@fracturedsignals.uk</a></p>
+          <p style="margin-top:12px">Social links, mailing list signup, or phone number can go here.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
+    <div style="color:var(--muted)">© <span id="year"></span> Your Project</div>
+    <div style="color:var(--muted)">Built with ❤️ — single-page responsive layout</div>
+  </div>
+</footer>
+
+<script src="js/style3.js"></script>
+
+</body>
 </html>

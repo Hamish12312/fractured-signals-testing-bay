@@ -1,0 +1,343 @@
+/* =========== CSS VARIABLES =========== */
+:root {
+    --bg: #0f1115;
+    --panel: #0b0c0f;
+    --muted: #ffffff;
+    --accent: #ff0000;
+    --glass: rgba(255, 255, 255, 0.04);
+    --max-width: 1100px;
+    --header-height: 76px;
+    --transition: 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
+    --logo-mobile-w: 90vw; /* logo width on mobile ~90% */
+    --logo-desktop-w: 18vw; /* logo width on desktop ~15-20% - adjust as needed */
+}
+
+/* =========== Basic reset =========== */
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial;
+    background-image: url("images/website-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #e9eef2;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========== Layout =========== */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header.site-header {
+    position: fixed; /* 🔥 keep header always visible */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15));
+}
+
+/* Add this to push page content below the fixed header */
+body {
+    padding-top: var(--header-height);
+}
+
+/* Mobile first header */
+.header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    min-height: var(--header-height);
+}
+
+/* Logo */
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.brand .logo {
+    width: var(--logo-mobile-w); /* mobile default: ~90vw */
+    max-width: 400px;
+    cursor: default;
+}
+/* Provide a simple SVG logo fallback (user can replace) */
+.logo svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* mobile hamburger button under logo */
+.nav-toggle {
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+.nav-toggle:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+}
+
+/* Mobile nav panel (collapsible) */
+nav.mobile-nav {
+    width: 100%;
+    display: none; /* toggled by JS */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+nav.mobile-nav a {
+    display: block;
+    padding: 10px 12px;
+    color: var(--muted);
+    border-radius: 8px;
+}
+nav.mobile-nav a:hover {
+    background: rgba(255, 255, 255, 0.02);
+    color: #fff;
+}
+
+/* =========== Desktop header changes =========== */
+@media (min-width: 900px) {
+    .header-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 30px;
+        gap: 0;
+    }
+    /* logo on left, menu horizontally on right */
+    .brand .logo {
+        width: var(--logo-desktop-w); /* 15-20% viewport width */
+        max-width: 220px;
+    }
+    .nav-toggle {
+        display: none;
+    } /* hide mobile toggle on desktop */
+    nav.mobile-nav {
+        display: block;
+        width: auto;
+        background: transparent;
+        padding: 0;
+    } /* we'll style below as desktop nav */
+    nav.desktop-nav {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+    }
+    nav.desktop-nav a {
+        color: var(--muted);
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-weight: 600;
+    }
+    nav.desktop-nav a:hover,
+    nav.desktop-nav a.active {
+        color: #fff;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
+}
+
+/* =========== Cover / Hero =========== */
+.cover {
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.cover-inner {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.cover-logo {
+    margin: 0 auto 26px;
+    width: clamp(220px, 36vw, 520px);
+}
+/* Provide hook for user's animation — they'll target #logo-animation */
+#logo-animation {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.cover-sub {
+    color: var(--muted);
+    font-size: 1.02rem;
+    margin-top: 8px;
+}
+
+/* =========== Section styles =========== */
+section {
+    padding: 72px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+.section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+h2.section-title {
+    margin: 0 0 18px 0;
+    font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+/* Make titles editable by default for quick editing */
+h2.section-title[contenteditable="true"] {
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.03);
+    padding-bottom: 8px;
+    outline: none;
+}
+h2.section-title:focus {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+p.lead {
+    color: var(--muted);
+    margin-top: 8px;
+    max-width: 70ch;
+}
+
+/* =========== Music list =========== */
+.tracks {
+    margin-top: 24px;
+    display: grid;
+    gap: 14px;
+}
+.track {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.track-info {
+    flex: 1;
+}
+.track-title {
+    margin: 0;
+    font-weight: 700;
+}
+.track-meta {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+audio {
+    width: 100%;
+    margin-top: 8px;
+}
+
+/* =========== Contact form =========== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 18px;
+}
+.form-control {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+input[type="text"],
+input[type="email"],
+textarea {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 8px;
+    resize: vertical;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border: none;
+    color: #071018;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* Desktop layout tweaks */
+@media (min-width: 820px) {
+    .contact-grid {
+        grid-template-columns: 1fr 360px;
+        align-items: start;
+    }
+}
+
+/* footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* small helper */
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
