@@ -95,12 +95,6 @@ body {
     max-width: 400px;
     cursor: default;
 }
-/* Provide a simple SVG logo fallback (user can replace) */
-.logo svg {
-    display: block;
-    width: 100%;
-    height: auto;
-}
 
 /* mobile hamburger button under logo */
 .nav-toggle {
@@ -142,6 +136,9 @@ nav.mobile-nav a:hover {
 
 /* =========== Desktop header changes =========== */
 @media (min-width: 900px) {
+    body {
+        padding-top: auto;
+    }
     .header-inner {
         flex-direction: row;
         align-items: center;
@@ -188,7 +185,7 @@ nav.mobile-nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    padding: auto 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -199,7 +196,7 @@ nav.mobile-nav a:hover {
     margin: 0 auto;
 }
 .cover-logo {
-    margin: 0 auto 26px;
+    margin: 0 auto 00px;
     width: clamp(220px, 36vw, 520px);
 }
 /* Provide hook for user's animation — they'll target #logo-animation */
@@ -216,7 +213,7 @@ nav.mobile-nav a:hover {
 
 /* =========== Section styles =========== */
 section {
-    padding: 72px 20px;
+    padding: 5vh 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.02);
 }
 .section-inner {
@@ -316,7 +313,7 @@ textarea {
 }
 
 /* Desktop layout tweaks */
-@media (min-width: 820px) {
+@media (min-width: 620px) {
     .contact-grid {
         grid-template-columns: 1fr 360px;
         align-items: start;
