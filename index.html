@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Fractured Signals</title>
 <meta name="description" content="One-page site for a music project — cover, about, music, contact." />
-<link rel="stylesheet" href="style3.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="site-header" role="banner">
   <div class="container header-inner">
     <!-- Left: Brand / Logo -->
-    <div class="brand" aria-label="Brand">
+    <div class="brand">
       <div class="logo" id="logo-top" title="Your Project">
           <img src="images/fractured-signals-logo.png">
       </div>
@@ -76,16 +76,16 @@
   <section id="music" aria-labelledby="musicHeading">
     <div class="section-inner container">
       <h2 id="musicHeading" class="section-title" contenteditable="true">Music</h2>
-      <p class="lead" contenteditable="true">Tracks below are sample markup. Replace the `src` attributes with your server paths (e.g. <code>/audio/track1.mp3</code>).</p>
+      <p class="lead" contenteditable="true">Below are two tracks we have completed recently, we look forward to any feedback given.</p>
 
       <div class="tracks" id="tracksList">
         <!-- Example track (duplicate this block for each track or use the small JS helper below) -->
         <article class="track" data-track-id="1">
           <div class="track-info">
-            <p class="track-title" contenteditable="true">Track One (Editable Title)</p>
-            <p class="track-meta" contenteditable="true">2025 • Single • 3:45</p>
+            <p class="track-title" contenteditable="true">Don't Wake Me Up</p>
+            <p class="track-meta" contenteditable="true">2025 • Single • 3:11</p>
             <!-- Audio player — replace src with your actual file path -->
-            <audio controls preload="metadata" src="/audio/track1.mp3">
+            <audio controls preload="metadata" src="/music/DWMU_fixed.mp3">
               Your browser does not support the audio element.
             </audio>
           </div>
@@ -93,18 +93,11 @@
 
         <article class="track" data-track-id="2">
           <div class="track-info">
-            <p class="track-title" contenteditable="true">Track Two</p>
-            <p class="track-meta" contenteditable="true">2025 • Single • 4:12</p>
-            <audio controls preload="metadata" src="/audio/track2.mp3"></audio>
+            <p class="track-title" contenteditable="true">I'm Free</p>
+            <p class="track-meta" contenteditable="true">2025 • Single • 4:09</p>
+            <audio controls preload="metadata" src="music/IMFREE_fixed.mp3"></audio>
           </div>
         </article>
-      </div>
-
-      <!-- Developer helper: quick form to add a track entry client-side (not persisted) -->
-      <div style="margin-top:18px; display:flex; gap:8px; align-items:center; flex-wrap:wrap">
-        <input id="newTrackSrc" type="text" placeholder="/audio/your-file.mp3" style="flex:1; min-width:220px; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff">
-        <input id="newTrackTitle" type="text" placeholder="Track Title" style="min-width:160px; padding:8px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:#fff">
-        <button class="btn" id="addTrackBtn" type="button">Add Track</button>
       </div>
     </div>
   </section>
@@ -151,7 +144,7 @@
   </div>
 </footer>
 
-<script src="js/style3.js"></script>
+<script src="js/functions.js"></script>
 
 </body>
 </html>
