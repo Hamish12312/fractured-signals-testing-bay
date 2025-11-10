@@ -1,149 +1,218 @@
 /* =========== Small JS for interactions =========== */
 
+// Get current year for footer or other display
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* NAV toggle behavior for mobile */
+// Define necessary DOM elements
 const navToggle = document.getElementById('navToggle');
 const mobileNav = document.getElementById('mobileNav');
 const desktopNav = document.querySelector('.desktop-nav');
+const siteHeader = document.querySelector('.site-header'); // Cached for performance
 
+/**
+ * Updates the visibility of the mobile vs. desktop navigation based on screen width.
+ */
 function updateMobileNavVisibility(){
   const isMobile = window.matchMedia('(max-width:899px)').matches;
+
   if(isMobile){
-    // hide desktop nav, show toggle + mobileNav based on state
-    desktopNav.style.display = 'none';
-    navToggle.style.display = '';
-    // mobileNav is toggled by button
+    // hide desktop nav, show toggle
+    if (desktopNav) desktopNav.style.display = 'none';
+    if (navToggle) navToggle.style.display = '';
+    // mobileNav state is managed by the toggle button click handler
   } else {
-    desktopNav.style.display = 'flex';
-    navToggle.style.display = 'none';
-    mobileNav.style.display = 'none';
-    navToggle.setAttribute('aria-expanded','false');
-    mobileNav.setAttribute('aria-hidden','true');
+    // Show desktop nav, hide toggle and mobile nav
+    if (desktopNav) desktopNav.style.display = 'flex';
+    if (navToggle) {
+      navToggle.style.display = 'none';
+      navToggle.setAttribute('aria-expanded','false');
+    }
+    if (mobileNav) {
+      mobileNav.style.display = 'none';
+      mobileNav.setAttribute('aria-hidden','true');
+    }
   }
 }
+
+// Initialize on load and update on resize
 updateMobileNavVisibility();
 window.addEventListener('resize', updateMobileNavVisibility);
 
-navToggle.addEventListener('click', () => {
-  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-  navToggle.setAttribute('aria-expanded', String(!expanded));
-  if(!expanded){
-    mobileNav.style.display = 'block';
-    mobileNav.setAttribute('aria-hidden','false');
-  } else {
-    mobileNav.style.display = 'none';
-    mobileNav.setAttribute('aria-hidden','true');
-  }
-});
+/**
+ * Toggle behavior for the mobile navigation button.
+ */
+if (navToggle && mobileNav) {
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    const newState = String(!expanded);
 
-/* Smooth scroll for nav links */
+    navToggle.setAttribute('aria-expanded', newState);
+
+    if(!expanded){
+      mobileNav.style.display = 'block';
+      mobileNav.setAttribute('aria-hidden','false');
+    } else {
+      mobileNav.style.display = 'none';
+      mobileNav.setAttribute('aria-hidden','true');
+    }
+  });
+}
+
+/**
+ * Smooth scroll for navigation links, with fix for mobile positioning.
+ */
 document.querySelectorAll('.nav-link').forEach(a => {
   a.addEventListener('click', (e) => {
-    // internal link
     const href = a.getAttribute('href');
+
+    // Only handle internal links starting with #
     if(href && href.startsWith('#')){
       e.preventDefault();
       const target = document.querySelector(href);
-      if(target){
-        const headerOffset = 10 + document.querySelector('.site-header').offsetHeight;
+
+      if(target && siteHeader){
+        const isMobile = window.matchMedia('(max-width:899px)').matches;
+
+        // **FIX: Close mobile nav BEFORE calculating position and scrolling.**
+        if(isMobile && mobileNav && navToggle){
+          mobileNav.style.display = 'none';
+          navToggle.setAttribute('aria-expanded','false');
+          mobileNav.setAttribute('aria-hidden','true');
+        }
+
+        // Calculate the offset (header height + a little padding)
+        const headerOffset = 10 + siteHeader.offsetHeight;
+
+        // Calculate the final scroll position
         const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+        // Scroll smoothly
         window.scrollTo({ top, behavior:'smooth'});
       }
-    }
-    // close mobile nav after selection
-    if(window.matchMedia('(max-width:899px)').matches){
-      mobileNav.style.display = 'none';
-      navToggle.setAttribute('aria-expanded','false');
-      mobileNav.setAttribute('aria-hidden','true');
     }
   });
 });
 
-/* Active nav highlighting on scroll */
+/**
+ * Active navigation highlighting on scroll.
+ */
 const sectionIds = ['cover','about','music','contact'];
 const navLinks = Array.from(document.querySelectorAll('.nav-link'));
 
 function pickActive() {
-  const fromTop = window.scrollY + document.querySelector('.site-header').offsetHeight + 30;
+  if (!siteHeader) return;
+
+  const fromTop = window.scrollY + siteHeader.offsetHeight + 10;
   let current = 'cover';
+
+  // Find the highest section whose top edge is less than or equal to the 'fromTop' line
   for(const id of sectionIds){
     const el = document.getElementById(id);
-    if(el && el.offsetTop <= fromTop) current = id;
+    if(el && el.offsetTop <= fromTop) {
+      current = id;
+    }
   }
+
+  // Apply 'active' class to the corresponding link
   navLinks.forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === '#' + current);
   });
 }
+
 window.addEventListener('scroll', pickActive);
 window.addEventListener('resize', pickActive);
-pickActive();
+pickActive(); // Initial call to set active link
 
-/* Contact form: by default prevent actual submit and show a simple alert;
-   Replace handleContactSubmit with a real POST to your server or integration. */
-function handleContactSubmit(e){
+/**
+ * Handle contact form submission (demo).
+ * Replace this function with a real POST to your server or integration.
+ */
+// Ensure the function is accessible globally if called from HTML: <form onsubmit="handleContactSubmit(event)">
+window.handleContactSubmit = function(e){
   e.preventDefault();
-  const nm = document.getElementById('name').value.trim();
-  const em = document.getElementById('email').value.trim();
-  const msg = document.getElementById('message').value.trim();
+
+  const nm = document.getElementById('name')?.value.trim();
+  const em = document.getElementById('email')?.value.trim();
+  const msg = document.getElementById('message')?.value.trim();
+
   // Basic validation
-  if(!nm || !em || !msg){ alert('Please fill all fields.'); return; }
-  // Example: open default mail app (uncomment if you prefer)
-  // window.location.href = `mailto:booking@example.com?subject=${encodeURIComponent('Contact from '+nm)}&body=${encodeURIComponent(msg + '\\n\\nFrom: ' + nm + ' ('+em+')')}`;
+  if(!nm || !em || !msg){
+    alert('Please fill all fields.');
+    return;
+  }
 
   // For now show a friendly message (replace with fetch to your backend)
   alert('Thanks! Your message was received (demo). Replace handleContactSubmit with your server-side POST to make this live.');
   e.target.reset();
 }
 
+
 /* Music: Add tracks client-side (dev helper only) */
 const addBtn = document.getElementById('addTrackBtn');
 const tracksList = document.getElementById('tracksList');
-addBtn && addBtn.addEventListener('click', () => {
-  const src = document.getElementById('newTrackSrc').value.trim();
-  const title = document.getElementById('newTrackTitle').value.trim() || 'New Track';
-  if(!src) return alert('Enter a path to the audio file (e.g. /audio/track3.mp3).');
-  const id = Date.now();
-  const article = document.createElement('article');
-  article.className = 'track';
-  article.setAttribute('data-track-id', id);
-  article.innerHTML = `
-    <div class="track-info">
-      <p class="track-title" contenteditable="true">${escapeHtml(title)}</p>
-      <p class="track-meta" contenteditable="true">— • —</p>
-      <audio controls preload="metadata" src="${escapeHtml(src)}">Your browser does not support the audio element.</audio>
-    </div>
-  `;
-  tracksList.appendChild(article);
-  document.getElementById('newTrackSrc').value = '';
-  document.getElementById('newTrackTitle').value = '';
-});
 
-/* small helper to avoid injection in innerHTML builder */
-function escapeHtml(str){
-  return str.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+if (addBtn && tracksList) {
+  addBtn.addEventListener('click', () => {
+    const srcInput = document.getElementById('newTrackSrc');
+    const titleInput = document.getElementById('newTrackTitle');
+
+    const src = srcInput?.value.trim();
+    const title = titleInput?.value.trim() || 'New Track';
+
+    if(!src) return alert('Enter a path to the audio file (e.g. /audio/track3.mp3).');
+
+    const id = Date.now();
+    const article = document.createElement('article');
+    article.className = 'track';
+    article.setAttribute('data-track-id', id);
+    article.innerHTML = `
+      <div class="track-info">
+        <p class="track-title" contenteditable="true">${escapeHtml(title)}</p>
+        <p class="track-meta" contenteditable="true">— • —</p>
+        <audio controls preload="metadata" src="${escapeHtml(src)}">Your browser does not support the audio element.</audio>
+      </div>
+    `;
+    tracksList.appendChild(article);
+
+    if(srcInput) srcInput.value = '';
+    if(titleInput) titleInput.value = '';
+  });
 }
 
-/* Accessibility: allow enter on contenteditable h2 to blur */
+/**
+ * Small helper function to escape HTML for safety when building innerHTML.
+ * @param {string} str - The string to escape.
+ * @returns {string} The escaped string.
+ */
+function escapeHtml(str){
+  if (typeof str !== 'string') return str;
+  return str.replace(/[&<>"']/g, m => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;',
+    "'":'&#39;'
+  }[m]));
+}
+
+/**
+ * Accessibility: allow 'Enter' key on contenteditable h2 elements to blur (stop editing).
+ */
 document.querySelectorAll('h2[contenteditable="true"]').forEach(h => {
   h.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter'){ e.preventDefault(); h.blur(); }
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      h.blur();
+    }
   });
 });
 
-/* OPTIONAL: If you have a separate animation file, you can initialize it here.
-   For example, if your animation script expects an element with id "logo-animation",
-   it will find #logo-animation inside the cover. Example stub:
-
+/* OPTIONAL: Animation initialization stub (keep if needed) */
 (function initUserAnimation(){
-  // If you include another script that defines window.initLogoAnimation(element) it can be called:
   if(window.initLogoAnimation && typeof window.initLogoAnimation === 'function'){
     const el = document.getElementById('logo-animation');
     try{ window.initLogoAnimation(el); }catch(err){ console.warn('Logo animation error', err); }
   }
 })();
-
-Place your animation JS file after this script or modify to suit.
-*/
 
 /* End of script */

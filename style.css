@@ -66,7 +66,7 @@ header.site-header {
     right: 0;
     z-index: 1000;
     backdrop-filter: blur(6px);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.15));
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35));
 }
 
 /* Add this to push page content below the fixed header */
@@ -133,6 +133,7 @@ nav.mobile-nav a:hover {
     background: rgba(255, 255, 255, 0.02);
     color: #fff;
 }
+
 
 /* =========== Desktop header changes =========== */
 @media (min-width: 900px) {
