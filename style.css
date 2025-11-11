@@ -254,7 +254,7 @@ p.lead {
     gap: 14px;
 }
 .track {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.02));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
     padding: 12px;
     border-radius: 12px;
     display: flex;
