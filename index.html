@@ -1,149 +1,175 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Fractured Signals</title>
-<meta name="description" content="One-page site for a music project — cover, about, music, contact." />
-<link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-<header class="site-header" role="banner">
-  <div class="container header-inner">
-    <!-- Left: Brand / Logo -->
-    <div class="brand">
-      <div class="logo" id="logo-top" title="Your Project">
-          <img src="images/fractured-signals-logo.png">
-      </div>
-    </div>
-
-    <!-- Mobile toggle (visible on small screens) -->
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      Menu
-    </button>
-
-    <!-- Desktop nav -->
-    <nav class="desktop-nav" id="mainNav" aria-label="Main navigation">
-      <a href="#cover" data-target="cover" class="nav-link">Home</a>
-      <a href="#about" data-target="about" class="nav-link">About</a>
-      <a href="#music" data-target="music" class="nav-link">Music</a>
-      <a href="#contact" data-target="contact" class="nav-link">Contact</a>
-    </nav>
-
-    <!-- Mobile nav panel (collapsible) — JS toggles display on small screens -->
-    <nav class="mobile-nav" id="mobileNav" aria-hidden="true" style="display:none">
-      <a href="#cover" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#music" class="nav-link">Music</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <!-- COVER / HERO -->
-  <section id="cover" class="cover" aria-labelledby="coverTitle">
-    <div class="cover-inner container">
-      <!-- Logo center in cover. This is where your animation target should go. -->
-      <div class="cover-logo" id="coverLogo">
-        <!-- Provide an element with id="logo-animation" — your JS animation can target this element -->
-        <div id="logo-animation" aria-hidden="false">
-          <div class="content">
-        <img src="images/fractured.png" alt="Fractured" class="fractured" />
-        <div class="signals-container">
-          <img src="images/signals.png" alt="Signals" class="signals" />
-          <script src="js/glitch.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fractured Signals</title>
+    <meta name="description" content="One-page site for a music project — cover, about, music, contact." />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <!-- Left: Brand / Logo -->
+        <div class="brand">
+          <div class="logo" id="logo-top" title="Your Project">
+            <img src="images/fractured-signals-logo.png" />
+          </div>
         </div>
+
+        <!-- Mobile toggle (visible on small screens) -->
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+          Menu
+        </button>
+
+        <!-- Desktop nav -->
+        <nav class="desktop-nav" id="mainNav" aria-label="Main navigation">
+          <a href="#cover" data-target="cover" class="nav-link">Home</a>
+          <a href="#about" data-target="about" class="nav-link">About</a>
+          <a href="#music" data-target="music" class="nav-link">Music</a>
+          <a href="#contact" data-target="contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- Mobile nav panel (collapsible) — JS toggles display on small screens -->
+        <nav class="mobile-nav" id="mobileNav" aria-hidden="true" style="display: none">
+          <a href="#cover" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#music" class="nav-link">Music</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- COVER / HERO -->
+      <section id="cover" class="cover" aria-labelledby="coverTitle">
+        <div class="cover-inner container">
+          <!-- Logo center in cover. This is where your animation target should go. -->
+          <div class="cover-logo" id="coverLogo">
+            <!-- Provide an element with id="logo-animation" — your JS animation can target this element -->
+            <div id="logo-animation" aria-hidden="false">
+              <div class="content">
+                <img src="images/fractured.png" alt="Fractured" class="fractured" />
+                <div class="signals-container">
+                  <img src="images/signals.png" alt="Signals" class="signals" />
+                  <script src="js/glitch.js"></script>
+                </div>
+              </div>
+            </div>
+            <p class="cover-sub" style="max-width: 720px; margin: 12px auto 0">DRUM AND BASS DUO FROM OXFORDSHIRE</p>
+          </div>
         </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="aboutHeading">
+        <div class="section-inner container">
+          <h2 id="aboutHeading" class="section-title" contenteditable="true">About Us</h2>
+          <p class="lead" contenteditable="true">
+            Short editable paragraph about the project, band members, influences, background — click and edit directly.
+            When you're ready to publish, replace the text server-side or in your build pipeline.
+          </p>
+          <p style="color: var(--muted); margin-top: 14px">
+            Tip: Section titles and paragraphs are contenteditable so you can quickly update them while developing.
+            Remove contenteditable in production if you don't want inline editing.
+          </p>
+        </div>
+      </section>
+
+      <!-- MUSIC -->
+      <section id="music" aria-labelledby="musicHeading">
+        <div class="section-inner container">
+          <h2 id="musicHeading" class="section-title" contenteditable="true">Music</h2>
+          <p class="lead" contenteditable="true">
+            Below are two tracks we have completed recently, we look forward to any feedback given.
+          </p>
+
+          <div class="tracks" id="tracksList">
+            <!-- Example track (duplicate this block for each track or use the small JS helper below) -->
+            <article class="track" data-track-id="1">
+              <div class="track-info">
+                <p class="track-title" contenteditable="true">Don't Wake Me Up</p>
+                <p class="track-meta" contenteditable="true">2025 • Single • 3:11</p>
+                <!-- Audio player — replace src with your actual file path -->
+                <audio controls preload="metadata" src="music/DWMU_fixed.mp3">
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
+            </article>
+
+            <article class="track" data-track-id="2">
+              <div class="track-info">
+                <p class="track-title" contenteditable="true">I'm Free</p>
+                <p class="track-meta" contenteditable="true">2025 • Single • 4:09</p>
+                <audio controls preload="metadata" src="music/IMFREE_fixed.mp3"></audio>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-labelledby="contactHeading">
+        <div class="section-inner container">
+          <h2 id="contactHeading" class="section-title" contenteditable="true">Contact Us</h2>
+          <p class="lead" contenteditable="true">
+            Booking, press or general inquiries — replace the contact form action with your server endpoint or use the
+            mailto fallback below.
+          </p>
+
+          <div class="contact-grid">
+            <form id="contactForm" class="form" action="https://formsubmit.co/info@fracturedsignals.uk" method="POST">
+              <!-- FormSubmit hidden options -->
+              <input type="hidden" name="_subject" value="New Message from Fractured Signals Website!" />
+              <input type="hidden" name="_captcha" value="false" />
+              <!-- disable spam captcha -->
+              <input type="hidden" name="_next" value="https://fracturedsignals.uk/thankyou.html" />
+              <!-- redirect after submit -->
+
+              <div class="form-control">
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+              <div class="form-control">
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div class="form-control">
+                <textarea id="message" name="message" placeholder="Message..." rows="6" required></textarea>
+              </div>
+              <div style="margin-top: 10px">
+                <button class="btn" style="color: white" type="submit">Send Message</button>
+              </div>
+            </form>
+
+            <aside style="color: var(--muted); padding-left: 8px">
+              <strong>Alternative:</strong>
+              <p style="margin-top: 8px">
+                You can also email directly: <a href="mailto:info@fracturedsignals.uk">info@fracturedsignals.uk</a>
+              </p>
+              <p style="margin-top: 12px">Social links, mailing list signup, or phone number can go here.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div
+        class="container"
+        style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+        <div style="color: var(--muted)">© <span id="year"></span> Fractured Signals</div>
       </div>
-      <p class="cover-sub" style="max-width:720px; margin:12px auto 0">DRUM AND BASS DUO FROM OXFORDSHIRE</p>
-    </div>
-      </div>
-  </section>
+    </footer>
 
-  <!-- ABOUT -->
-  <section id="about" aria-labelledby="aboutHeading">
-    <div class="section-inner container">
-      <h2 id="aboutHeading" class="section-title" contenteditable="true">About Us</h2>
-      <p class="lead" contenteditable="true">Short editable paragraph about the project, band members, influences, background — click and edit directly. When you're ready to publish, replace the text server-side or in your build pipeline.</p>
-      <p style="color:var(--muted); margin-top:14px">Tip: Section titles and paragraphs are contenteditable so you can quickly update them while developing. Remove contenteditable in production if you don't want inline editing.</p>
-    </div>
-  </section>
-
-  <!-- MUSIC -->
-  <section id="music" aria-labelledby="musicHeading">
-    <div class="section-inner container">
-      <h2 id="musicHeading" class="section-title" contenteditable="true">Music</h2>
-      <p class="lead" contenteditable="true">Below are two tracks we have completed recently, we look forward to any feedback given.</p>
-
-      <div class="tracks" id="tracksList">
-        <!-- Example track (duplicate this block for each track or use the small JS helper below) -->
-        <article class="track" data-track-id="1">
-          <div class="track-info">
-            <p class="track-title" contenteditable="true">Don't Wake Me Up</p>
-            <p class="track-meta" contenteditable="true">2025 • Single • 3:11</p>
-            <!-- Audio player — replace src with your actual file path -->
-            <audio controls preload="metadata" src="music/DWMU_fixed.mp3">
-              Your browser does not support the audio element.
-            </audio>
-          </div>
-        </article>
-
-        <article class="track" data-track-id="2">
-          <div class="track-info">
-            <p class="track-title" contenteditable="true">I'm Free</p>
-            <p class="track-meta" contenteditable="true">2025 • Single • 4:09</p>
-            <audio controls preload="metadata" src="music/IMFREE_fixed.mp3"></audio>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" aria-labelledby="contactHeading">
-    <div class="section-inner container">
-      <h2 id="contactHeading" class="section-title" contenteditable="true">Contact Us</h2>
-      <p class="lead" contenteditable="true">Booking, press or general inquiries — replace the contact form action with your server endpoint or use the mailto fallback below.</p>
-
-      <div class="contact-grid">
-        <form action="https://formsubmit.co/info@fracturedsignals.uk" method="POST" id="contactForm" class="form" onsubmit="handleContactSubmit(event)">
-          <div class="form-control">
-            <label class="sr-only" for="name">Name</label>
-            <input id="name" name="name" type="text" placeholder="Your name" required>
-          </div>
-          <div class="form-control">
-            <label class="sr-only" for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-control">
-            <label class="sr-only" for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Message..." rows="6" required></textarea>
-          </div>
-          <div style="margin-top:10px">
-            <button class="btn" style="color: white" type="submit">Send Message</button>
-          </div>
-        </form>
-
-        <aside style="color:var(--muted); padding-left:8px">
-          <strong>Alternative:</strong>
-          <p style="margin-top:8px">You can also email directly: <a href="mailto:info@fracturedsignals.uk">info@fracturedsignals.uk</a></p>
-          <p style="margin-top:12px">Social links, mailing list signup, or phone number can go here.</p>
-        </aside>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container" style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
-    <div style="color:var(--muted)">© <span id="year"></span> Fractured Signals</div>
-  </div>
-</footer>
-
-<script src="js/functions.js"></script>
-
-</body>
+    <script src="js/functions.js"></script>
+  </body>
 </html>
