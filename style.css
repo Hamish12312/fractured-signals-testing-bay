@@ -254,7 +254,7 @@ p.lead {
     gap: 14px;
 }
 .track {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
     padding: 12px;
     border-radius: 12px;
     display: flex;
@@ -293,12 +293,13 @@ audio {
 input[type="text"],
 input[type="email"],
 textarea {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.03);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
     padding: 10px 12px;
     border-radius: 8px;
     resize: vertical;
+    margin-bottom: 5px;
 }
 .btn {
     display: inline-flex;
