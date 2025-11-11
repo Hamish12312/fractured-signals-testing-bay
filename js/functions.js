@@ -142,7 +142,7 @@ window.handleContactSubmit = function(e){
   }
 
   // For now show a friendly message (replace with fetch to your backend)
-  alert('Thanks! Your message was received (demo). Replace handleContactSubmit with your server-side POST to make this live.');
+  alert('Thanks! Your message was received.');
   e.target.reset();
 }
 
