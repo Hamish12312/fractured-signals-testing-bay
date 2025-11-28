@@ -122,6 +122,7 @@ nav.mobile-nav {
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 8px;
+    text-align: center;
 }
 nav.mobile-nav a {
     display: block;
