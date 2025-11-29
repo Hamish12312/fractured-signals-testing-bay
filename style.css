@@ -147,6 +147,10 @@ nav.mobile-nav a:hover {
 @media (max-width: 600px) {
     .coverart {
         width: 100%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+        padding: 12px;
+        border-radius: 12px;
+        margin: auto
     }
 }
 
