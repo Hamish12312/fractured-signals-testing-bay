@@ -135,6 +135,20 @@ nav.mobile-nav a:hover {
     color: #fff;
 }
 
+.coverart {
+    width: 40vw;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+    padding: 12px;
+    border-radius: 12px;
+    margin: auto
+    
+    
+}
+@media (max-width: 600px) {
+    .coverart {
+        width: 100%;
+    }
+}
 
 /* =========== Desktop header changes =========== */
 @media (min-width: 900px) {
@@ -198,7 +212,7 @@ nav.mobile-nav a:hover {
     margin: 0 auto;
 }
 .cover-logo {
-    margin: 0 auto 00px;
+    margin: auto;
     width: clamp(220px, 36vw, 520px);
 }
 /* Provide hook for user's animation — they'll target #logo-animation */
