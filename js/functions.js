@@ -96,7 +96,7 @@ document.querySelectorAll('.nav-link').forEach(a => {
 /**
  * Active navigation highlighting on scroll.
  */
-const sectionIds = ['cover','about','music','contact'];
+const sectionIds = ['cover','about','music','albumart','reachout'];
 const navLinks = Array.from(document.querySelectorAll('.nav-link'));
 
 function pickActive() {
