@@ -31,7 +31,7 @@ body.fade-out {
   opacity: 0;
 }
 
-/* Subtle noise overlay */
+/* Noise overlay */
 body::before {
   content: "";
   position: fixed;
@@ -76,6 +76,7 @@ body::before {
   color: #00ff88;
 }
 
+/* Desktop Social Position */
 .nav-social {
   position: absolute;
   right: 2rem;
@@ -98,7 +99,7 @@ body::before {
 }
 
 /* ======================
-   HERO (USED ON BOTH PAGES)
+   HERO
 ====================== */
 #hero {
   position: relative;
@@ -153,7 +154,7 @@ body::before {
 }
 
 /* ======================
-   ENTER BUTTON (INDEX ONLY)
+   ENTER BUTTON
 ====================== */
 .btn {
   margin-top: 2.5rem;
@@ -223,18 +224,28 @@ footer {
 }
 
 /* ======================
-   RESPONSIVE
+   MOBILE FIX
 ====================== */
 @media (max-width: 768px) {
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .nav-links {
     gap: 1.5rem;
   }
 
+  /* Remove absolute positioning on mobile */
   .nav-social {
-    right: 1rem;
+    position: static;
+    justify-content: center;
+    margin-top: 0.5rem;
   }
 
-  .nav-social svg {
+  .nav-social img {
     width: 24px;
     height: 24px;
   }
