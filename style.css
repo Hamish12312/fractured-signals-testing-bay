@@ -80,19 +80,20 @@ body::before {
   position: absolute;
   right: 2rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.8rem;
+  align-items: center;
 }
 
-.nav-social svg {
-  width: 28px;
-  height: 28px;
-  opacity: 0.8;
-  transition: 0.3s ease;
+.nav-social img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: all 0.3s ease;
 }
 
-.nav-social svg:hover {
+.nav-social img:hover {
   opacity: 1;
-  color: #00ff88;
   transform: scale(1.15);
 }
 
