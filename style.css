@@ -11,6 +11,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  height: 100%;
+}
+
 /* ======================
    PAGE FADE TRANSITIONS
 ====================== */
@@ -31,7 +35,9 @@ body.fade-out {
   opacity: 0;
 }
 
-/* Noise overlay */
+/* ======================
+   NOISE OVERLAY
+====================== */
 body::before {
   content: "";
   position: fixed;
@@ -99,11 +105,11 @@ body::before {
 }
 
 /* ======================
-   HERO
+   HERO SECTION
 ====================== */
 #hero {
   position: relative;
-  height: 100vh;
+  height: 100dvh;  /* mobile dynamic viewport fix */
   overflow: hidden;
 }
 
@@ -224,7 +230,7 @@ footer {
 }
 
 /* ======================
-   MOBILE FIX
+   RESPONSIVE FIXES
 ====================== */
 @media (max-width: 768px) {
 
