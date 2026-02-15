@@ -1,224 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Fractured Signals</title>
-    <meta name="description" content="Fractured Signals - Drum and Bass Duo from Oxfordshire" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/x-icon" href="images/favicon.png" />
-  </head>
-  <body>
-    <header class="site-header" role="banner">
-      <div class="container header-inner">
-        <!-- Left: Brand / Logo -->
-        <div class="brand">
-          <div class="logo" id="logo-top" title="Your Project">
-            <img src="images/fractured-signals-logo.png" />
-          </div>
-        </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fractured Signals</title>
 
-        <!-- Mobile toggle (visible on small screens) -->
-        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2">
-            <path d="M3 6h18M3 12h18M3 18h18" />
-          </svg>
-          Menu
-        </button>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+</head>
 
-        <!-- Desktop nav -->
-        <nav class="desktop-nav" id="mainNav" aria-label="Main navigation">
-          <a href="#cover" data-target="cover" class="nav-link">Home</a>
-          <a href="#about" data-target="about" class="nav-link">About</a>
-          <a href="#music" data-target="music" class="nav-link">Listen</a>
-          <a href="#albumart" data-target="albumart" class="nav-link">Cover Art</a>
-          <a href="#reachout" data-target="reachout" class="nav-link">Contact Us</a>
-        </nav>
+<body class="cover-page">
 
-        <!-- Mobile nav panel (collapsible) — JS toggles display on small screens -->
-        <nav class="mobile-nav" id="mobileNav" aria-hidden="true" style="display: none">
-          <a href="#cover" class="nav-link">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#music" class="nav-link">Listen</a>
-          <a href="#albumart" class="nav-link">Cover Art</a>
-          <a href="#reachout" class="nav-link">Contact Us</a>
-        </nav>
-      </div>
-    </header>
+  <section id="hero">
+    <div class="hero-bg"></div>
 
-    <main>
-      <!-- COVER / HERO -->
-      <section id="cover" class="cover" aria-labelledby="coverTitle">
-        <div class="cover-inner container">
-          <!-- Logo center in cover. This is where your animation target should go. -->
-          <div class="cover-logo" id="coverLogo">
-            <!-- Provide an element with id="logo-animation" — your JS animation can target this element -->
-            <div id="logo-animation" aria-hidden="false">
-              <div class="content">
-                <img src="images/fractured.png" alt="Fractured" class="fractured" />
-                <div class="signals-container">
-                  <img src="images/signals.png" alt="Signals" class="signals" />
-                  <script src="js/glitch.js"></script>
-                </div>
-              </div>
-            </div>
-            <p class="cover-sub" style="max-width: 720px; margin: 12px auto 0">DRUM AND BASS DUO FROM OXFORDSHIRE</p>
-          </div>
-        </div>
-      </section>
+    <div class="hero-content">
+      <img src="images/fractured-signals-logo.png" 
+           alt="Fractured Signals Logo" 
+           class="hero-logo">
 
-      <!-- ABOUT -->
-      <section id="about" aria-labelledby="aboutHeading">
-        <div class="section-inner container">
-          <h2 id="aboutHeading" class="section-title" contenteditable="false">About Us</h2>
-          <p class="lead" contenteditable="false">
-            Fractured Signals is a UK-based drum & bass project built around the creative partnership between SH3M and
-            Guy Oakland.
-          </p>
-          <p class="lead" contenteditable="false">
-            SH3M brings fresh energy as a DJ and producer — performing at Truck Festival, Y Not? Festival, and holding
-            regular sets at O2 Academy Oxford — crafting bass-heavy rhythms and developing new material for release. Guy
-            Oakland, formerly a solo artist with a catalogue of originals and remixes, adds production depth and musical
-            experience drawn from years of writing across genres.
-          </p>
-          <p class="lead" contenteditable="false">
-            Formed after crossing paths as colleagues, the pair combined their ideas, influences, and experience to
-            create Fractured Signals. Rooted in Oxfordshire, the project represents the intersection of their musical
-            identities — blending together many styles with a shared passion for drum & bass.
-          </p>
-          <p class="lead" contenteditable="false">
-            Fractured Signals isn’t just a collaboration; it’s a progression. A merging of backgrounds. A focused effort
-            to build a distinct, evolving DnB sound driven by creativity, precision, and genuine love for the craft.
-          </p>
-        </div>
-      </section>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <p class="tagline">DRUM & BASS | OXFORDSHIRE</p>
 
-      <!-- MUSIC -->
-      <section id="music" aria-labelledby="musicHeading">
-        <div class="section-inner container">
-          <h2 id="musicHeading" class="section-title" contenteditable="false">Listen</h2>
-          <p class="lead" contenteditable="false">
-            Discover four exclusive track snippets below - crafted to give you a taste of what could become our next EP. Full tracks available on request.
-          </p>
+      <a href="home.html" class="btn enter-site">ENTER SITE</a>
+    </div>
+  </section>
 
-          <div class="tracks" id="tracksList">
-            <!-- Example track (duplicate this block for each track or use the small JS helper below) -->
-            <article class="track" data-track-id="2">
-              <div class="track-info">
-                <p class="track-title" contenteditable="false">Bullet In The Heart</p>
-                <p class="track-meta" contenteditable="false">2025 • Single • 4:25</p>
-                <audio controls preload="metadata" src="music/BITH_Snippet_Fixed.mp3"></audio>
-              </div>
-            </article>
-            <article class="track" data-track-id="2">
-              <div class="track-info">
-                <p class="track-title" contenteditable="false">Weakness</p>
-                <p class="track-meta" contenteditable="false">2025 • Single • 3:45</p>
-                <audio controls preload="metadata" src="music/WEAKNESS_Snippet_Fixed.mp3"></audio>
-              </div>
-            </article>
-            <article class="track" data-track-id="1">
-              <div class="track-info">
-                <p class="track-title" contenteditable="false">Don't Wake Me Up</p>
-                <p class="track-meta" contenteditable="false">2025 • Single • 3:11</p>
-                <!-- Audio player — replace src with your actual file path -->
-                <audio controls preload="metadata" src="music/DWMU_Snippet_Fixed.mp3">
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-            </article>
-            <article class="track" data-track-id="2">
-              <div class="track-info">
-                <p class="track-title" contenteditable="false">I'm Free</p>
-                <p class="track-meta" contenteditable="false">2025 • Single • 4:09</p>
-                <audio controls preload="metadata" src="music/IMFREE_Snippet_Fixed.mp3"></audio>
-              </div>
-            </article>
-          </div>
-        </div>
-        <br />
-        <br />
-        <br />
-      </section>
-      <section id="albumart" aria-labelledby="albumartHeading">
-        <div class="section-inner container">
-          <h2 id="albumartHeading" class="section-title" contenteditable="false">Cover Art</h2>
-          <img class="coverart" src="images/Fractured%20Signals%20-%20EP%20Cover@0.5x.jpg" />
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-      </section>
-      <section id="reachout" aria-labelledby="reachoutHeading">
-        <div class="section-inner container">
-          <h2 id="reachoutHeading" class="section-title" contenteditable="false">Reach Out</h2>
-          <a href="mailto:info@fracturedsignals.uk">info@fracturedsignals.uk</a>
-        </div>
-      </section>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-    </main>
-
-    <footer>
-      <div
-        class="container"
-        style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
-        <div style="color: var(--muted)">© <span id="year"></span> Fractured Signals</div>
-        <p style="margin-top: 8px">
-          <a href="mailto:info@fracturedsignals.uk">info@fracturedsignals.uk</a>
-        </p>
-      </div>
-    </footer>
-
-    <script src="js/functions.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
