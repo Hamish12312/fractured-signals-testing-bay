@@ -1,11 +1,19 @@
-// Fade IN on load
+// ===== Fade In on Load =====
 window.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("fade-in");
 });
 
-// Fade OUT on link click
+// ===== Handle Back/Forward Cache =====
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    document.body.classList.remove("fade-out");
+    document.body.classList.add("fade-in");
+  }
+});
+
+// ===== Fade Out on Enter Button Click =====
 document.querySelectorAll(".enter-link").forEach(link => {
-  link.addEventListener("click", function(e) {
+  link.addEventListener("click", function (e) {
     e.preventDefault();
     const destination = this.getAttribute("href");
 
@@ -18,7 +26,7 @@ document.querySelectorAll(".enter-link").forEach(link => {
   });
 });
 
-// Nav scroll effect
+// ===== Nav Scroll Effect =====
 const nav = document.querySelector(".nav");
 
 if (nav) {
