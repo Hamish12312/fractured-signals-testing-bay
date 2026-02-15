@@ -1,16 +1,9 @@
-// Scroll reveal
-const sections = document.querySelectorAll(".section");
+const nav = document.querySelector(".nav");
 
-if (sections.length > 0) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.2 });
-
-  sections.forEach(section => {
-    observer.observe(section);
-  });
-}
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    nav.classList.add("scrolled");
+  } else {
+    nav.classList.remove("scrolled");
+  }
+});
