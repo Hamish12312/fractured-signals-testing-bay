@@ -38,3 +38,35 @@ if (nav) {
         }
     });
 }
+
+// ===== GALLERY LIGHTBOX =====
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.querySelector(".lightbox-img");
+const closeBtn = document.querySelector(".lightbox-close");
+
+if (lightbox) {
+    const galleryImages = document.querySelectorAll(".gallery-grid img");
+
+    galleryImages.forEach(img => {
+        img.addEventListener("click", () => {
+            lightbox.classList.add("active");
+            lightboxImg.src = img.src;
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove("active");
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            lightbox.classList.remove("active");
+        }
+    });
+}
