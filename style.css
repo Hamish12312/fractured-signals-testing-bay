@@ -19,7 +19,7 @@ html, body {
    PAGE FADE TRANSITIONS
 ====================== */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Funnel Display', sans-serif;
   color: #fff;
   overflow-x: hidden;
   background: radial-gradient(circle at 50% 20%, #111 0%, #000 70%);
@@ -79,7 +79,7 @@ body::before {
 }
 
 .nav a:hover {
-  color: #00ff88;
+  color: rgb(63, 239, 249);
 }
 
 /* Desktop Social Position */
@@ -185,9 +185,12 @@ body::before {
   padding: 8rem 2rem;
   text-align: center;
   background: #0a0a0a;
+
+  /* Proper anchor offset for fixed nav */
+  scroll-margin-top: 110px;
 }
 
-/* Subtle alternating tone */
+/* Alternate tone cleanly */
 .content-section:nth-of-type(even) {
   background: #0e0e0e;
 }
@@ -202,6 +205,14 @@ body::before {
   margin: auto;
   opacity: 0.85;
   line-height: 1.7;
+}
+
+.content-image {
+  width: 55%;
+}
+
+.coverart {
+  width: 30%;
 }
 
 /* ======================
@@ -219,6 +230,47 @@ body::before {
 }
 
 /* ======================
+   GALLERY GROUPED COLLAGE
+====================== */
+
+.gallery-group {
+  padding: 6rem 2rem;
+  background: #0a0a0a;
+}
+
+.gallery-group:nth-of-type(even) {
+  background: #0e0e0e;
+}
+
+.gallery-group h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+.gallery-grid {
+  column-count: 3;
+  column-gap: 1rem;
+}
+
+.gallery-grid img {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  break-inside: avoid;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+/* ======================
    FOOTER
 ====================== */
 footer {
@@ -232,6 +284,12 @@ footer {
 /* ======================
    RESPONSIVE FIXES
 ====================== */
+@media (max-width: 1000px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
 @media (max-width: 768px) {
 
   .nav {
@@ -257,9 +315,24 @@ footer {
 
   .content-section {
     padding: 6rem 1.5rem;
+    scroll-margin-top: 120px;
   }
 
   .video-wrapper {
     width: 95%;
+  }
+
+  .coverart {
+    width: 95%;
+  }
+
+  .content-image {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    column-count: 1;
   }
 }
