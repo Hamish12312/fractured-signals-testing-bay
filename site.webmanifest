@@ -2,7 +2,7 @@
   "name": "Fractured Signals",
   "short_name": "Fractured Signals",
   "description": "Official Fractured Signals site featuring artist info, latest releases, visuals, and contact details.",
-  "start_url": "./index.html",
+  "start_url": "/",
   "scope": "./",
   "display": "standalone",
   "background_color": "#000000",

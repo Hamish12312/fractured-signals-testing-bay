@@ -9,15 +9,27 @@ exit_code=0
 html_files=()
 while IFS= read -r file; do
   html_files+=("$file")
-done < <(find . -maxdepth 1 -type f -name "*.html" | sed 's|^\./||' | sort)
+done < <(find . -type f -name "*.html" -not -path "./.git/*" | sed 's|^\./||' | sort)
 
 if [ "${#html_files[@]}" -eq 0 ]; then
   echo "ERROR: No HTML files were found at repository root."
   exit 1
 fi
 
+required_metadata_pages=(
+  "index.html"
+  "home/index.html"
+  "gallery/index.html"
+)
+
 echo "Checking metadata requirements..."
-for file in "${html_files[@]}"; do
+for file in "${required_metadata_pages[@]}"; do
+  if [ ! -f "$file" ]; then
+    echo "ERROR: Missing required page: $file"
+    exit_code=1
+    continue
+  fi
+
   if ! rg -q 'rel="canonical"' "$file"; then
     echo "ERROR: $file is missing a canonical tag."
     exit_code=1
@@ -35,29 +47,35 @@ for file in "${html_files[@]}"; do
 done
 
 echo "Checking local asset and page references..."
-while IFS= read -r reference; do
-  path="${reference%%\?*}"
-  path="${path%%#*}"
+for file in "${html_files[@]}"; do
+  file_dir="$(dirname "$file")"
 
-  if [ -z "$path" ]; then
-    continue
-  fi
+  while IFS= read -r reference; do
+    path="${reference%%\?*}"
+    path="${path%%#*}"
 
-  case "$path" in
-    http:*|https:*|mailto:*|tel:*|data:*|javascript:*)
+    if [ -z "$path" ]; then
       continue
-      ;;
-  esac
+    fi
 
-  if [ ! -e "$path" ]; then
-    echo "ERROR: Missing local target: $path"
-    exit_code=1
-  fi
-done < <(
-  rg -No '(?:href|src)="[^"]+"' "${html_files[@]}" \
-    | sed -E 's/.*="([^"]+)"/\1/' \
-    | sort -u
-)
+    case "$path" in
+      http:*|https:*|mailto:*|tel:*|data:*|javascript:*)
+        continue
+        ;;
+    esac
+
+    if [[ "$path" == /* ]]; then
+      resolved=".$path"
+    else
+      resolved="$file_dir/$path"
+    fi
+
+    if [ ! -e "$resolved" ]; then
+      echo "ERROR: Missing local target in $file -> $path"
+      exit_code=1
+    fi
+  done < <(rg -No '(?:href|src)="[^"]+"' "$file" | sed -E 's/.*="([^"]+)"/\1/' | sort -u)
+done
 
 echo "Checking crawler and manifest files..."
 for required_file in robots.txt sitemap.xml site.webmanifest; do
