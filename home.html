@@ -3,15 +3,61 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Fractured Signals</title>
+        <title>Fractured Signals | Official Site</title>
         <meta
             name="description"
             content="Official Fractured Signals site featuring artist info, latest releases, visuals, and contact details."
         />
+        <meta name="robots" content="index,follow,max-image-preview:large" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="canonical" href="https://fracturedsignals.uk/home.html" />
+        <link rel="manifest" href="site.webmanifest" />
+        <link rel="apple-touch-icon" href="images/icons/apple-touch-icon.jpg" />
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Fractured Signals" />
+        <meta property="og:title" content="Fractured Signals | Official Site" />
+        <meta
+            property="og:description"
+            content="Official Fractured Signals site featuring artist info, latest releases, visuals, and contact details."
+        />
+        <meta property="og:url" content="https://fracturedsignals.uk/home.html" />
+        <meta property="og:image" content="https://fracturedsignals.uk/images/weakness-coverart.jpg" />
+        <meta property="og:image:width" content="2500" />
+        <meta property="og:image:height" content="2500" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Fractured Signals | Official Site" />
+        <meta
+            name="twitter:description"
+            content="Official Fractured Signals site featuring artist info, latest releases, visuals, and contact details."
+        />
+        <meta name="twitter:image" content="https://fracturedsignals.uk/images/weakness-coverart.jpg" />
         <link rel="icon" type="image/x-icon" href="images/favicon.png" />
         <link rel="stylesheet" href="./style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "MusicGroup",
+                "name": "Fractured Signals",
+                "url": "https://fracturedsignals.uk/",
+                "genre": ["Drum and bass", "DnB"],
+                "email": "mailto:info@fracturedsignals.uk",
+                "image": "https://fracturedsignals.uk/images/weakness-coverart.jpg",
+                "foundingLocation": "Oxfordshire, UK",
+                "member": [
+                    { "@type": "Person", "name": "SH3M" },
+                    { "@type": "Person", "name": "Guy Oakland" }
+                ],
+                "sameAs": [
+                    "https://www.youtube.com/@FracturedSignalsOfficial",
+                    "https://www.instagram.com/fracturedsignals/",
+                    "https://www.tiktok.com/@fracturedsignals"
+                ]
+            }
+        </script>
 
     </head>
 
@@ -71,6 +117,7 @@
                     src="images/fractured-signals-logo.png"
                     alt="Fractured Signals logo"
                     class="hero-logo"
+                    fetchpriority="high"
                     loading="eager"
                     decoding="async" />
                 <p class="tagline">DRUM & BASS | OXFORDSHIRE</p>
@@ -163,6 +210,6 @@
             <p>© 2026 Fractured Signals</p>
         </footer>
 
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
     </body>
 </html>
